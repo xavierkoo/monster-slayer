@@ -102,7 +102,7 @@
                 <ul>
                     <li v-for="log in gameLog">
                         <span class="text-primary" v-if="log.event == 'attack'">{{ log.name }} attacked the monster , dealing {{ log.number }} damage.</span>
-                        <span class="text-warning" v-if="log.event == 'specialAttack'">The {{ log.name }} unleashed a special attack, dealing {{ log.number }} damage.</span>
+                        <span class="text-warning" v-if="log.event == 'specialAttack'">{{ log.name }} unleashed a special attack, dealing {{ log.number }} damage.</span>
                         <span class="text-danger" v-if="log.event == 'attacked'">The {{ log.name }} attacked you, dealing {{ log.number }} damage.</span>
                         <span class="text-success" v-if="log.event == 'heal'">{{ log.name }} tend to your wounds, increasing your health by {{ log.number }}</span>
                     </li>

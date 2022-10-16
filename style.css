@@ -1,0 +1,30 @@
+h1 {
+    font-family: Creepster;
+    font-size: 400%;
+    font-style: italic;
+}
+
+h2, p, span {
+    font-family: Bangers;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0; 
+  }
+
+nav ul {
+    overflow:auto; overflow-y:scroll;
+}
+
+.btn .lead {
+    font-family: Bangers;
+    font-size: 150%;
+} 
+
+.gameLog {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 17em;
+}

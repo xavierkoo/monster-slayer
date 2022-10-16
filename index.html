@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Monster Slayer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row align-items-md-stretch">
+        <div
+            class="h-100 p-3 mb-3 text-white bg-danger text-center">
+            <h1>MONSTER SLAYER</h1>
+        </div>
+    </div>
+    </div>
+
+    <div id='app' class="container text-center">
+        <div class="row pb-3">
+            <div class="col-sm-1">
+                <!-- blank -->
+                
+            </div>
+            <!-- Player -->
+            <div class="col-sm-3">
+                <h2>YOU</h2> 
+                <img src="assets/hero.png" class="w-50 my-3" alt="hero">
+                <!-- player progress bar -->
+                <div class="progress">
+                    <div class="progress-bar" :style="playerHealthBar">{{ playerHealth }}</div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <!-- blank -->
+                <img src="assets/battle.png" class="w-50 my-3" alt="versus">
+            </div>
+
+            <!-- Monster -->
+            <div class="col-sm-3">
+                <h2>MONSTER</h2> 
+                <img src="assets/monster.png" class="w-50 my-3" alt="monster">
+                <!-- monster progress bar -->
+                <div class="progress">
+                    <div class="progress-bar" :style="monsterHealthBar">{{ monsterHealth }}</div>
+                </div>
+            </div>
+
+            <div class="col-sm-1">
+                <!-- blank -->
+            </div>
+        </div>
+
+        <!-- either show this START button --> 
+        <div class="row justify-content-center p-3" v-if="!startGame || gameOver">
+            <p class="lead">Select Player/Monster Level</p>
+            <!-- DDL for player --> 
+            <select class="col-sm-2" v-model="playerLevel">
+                <option v-for="num in levels"> {{ num }} </option>
+            </select>
+            <!-- START button -->
+            <div class="col-sm-8">
+                <button id='start' class="btn btn-danger" @click='start'>START NEW GAME</button>
+            </div>
+            <!-- DDL for monster -->             
+            <select class="col-sm-2" v-model="monsterLevel">
+                <option v-for="num in levels"> {{ num }} </option>
+            </select>
+        </div>
+
+        <!-- or this row of buttons (Attack etc)--> 
+        <div class="row justify-content-center p-3 border" v-else>
+            <div>
+                <button class="btn btn-default border border-primary border-3 m-1" @click="attack"><img src="assets/sword.png" width="70" alt="attack"></button>
+                <button class="btn btn-default border border-warning border-3 m-1" :disabled="attackCount < 4"  @click="specialAttack"><img src="assets/punch.png" width="70" alt="special"></button>
+                <button class="btn btn-default border border-success border-3 m-1" :disabled="healsLeft < 1 || playerHealth > 80" @click="heal"><img src="assets/heal.png" width="70" alt="heal"></button>
+                <button class="btn btn-default border border-secondary border-3 m-1" @click="giveUp"><img src="assets/grave.png" width="70" alt="forfeit"></button>
+            </div>
+        </div>
+
+        <!-- show game status/updates -->
+        <div class="row border mt-3 p-3">
+            <div>
+                <h2 class="border-bottom text-secondary pb-3">Game Log</h2>
+            </div>
+            <div class="col-sm text-start" v-if="!startGame">
+                <p class="text-info text-center">Game not started</p>
+            </div>
+            <div class="col-sm text-start" v-else>
+                <p class="text-info text-center">Ready, Fights On!</p>
+            </div>
+            <div class="gameLog">
+                <ul>
+                    <li v-for="log in gameLog">
+                        <span class="text-primary" v-if="log.event == 'attack'">{{ log.name }} attacked the monster , dealing {{ log.number }} damage.</span>
+                        <span class="text-warning" v-if="log.event == 'specialAttack'">The {{ log.name }} unleashed a special attack, dealing {{ log.number }} damage.</span>
+                        <span class="text-danger" v-if="log.event == 'attacked'">The {{ log.name }} attacked you, dealing {{ log.number }} damage.</span>
+                        <span class="text-success" v-if="log.event == 'heal'">{{ log.name }} tend to your wounds, increasing your health by {{ log.number }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-2">
+            <span class="text-warning">
+              Special Attacks Used: {{ specialCount }}
+            </span>&nbsp; &nbsp; 
+            <span class="text-primary"> 
+                Total Damage Dealt: {{ damageDealt }} 
+            </span>&nbsp; &nbsp; 
+            <span class="text-danger"> 
+                Total Damage Taken: {{ damageTaken }} 
+            </span>&nbsp; &nbsp; 
+            <span class="text-success"> 
+                Heals Used: {{ healsUsed }} 
+            </span>
+        </div>
+    </div>
+
+    <!-- game logic found here -->
+    <script src="app.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+
+</html>

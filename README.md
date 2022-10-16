@@ -4,7 +4,7 @@ TLDR: Monster slayer web browser game that demonstrates Bootstrap and general Vu
 Deployed on: https://monster-slayer-vue-game.netlify.app/
 
 ## Tech Stack 
-* Frontend - HTML, CSS, Vue.js 
+* Frontend - HTML, CSS, Bootstrap, Vue.js 
 
 ## Screenshots
 <img width="1360" alt="Screen Shot 2022-10-16 at 4 39 23 PM" src="https://user-images.githubusercontent.com/86020207/196027062-b3eb6fc1-20fa-4551-ac99-c374993647e5.png">

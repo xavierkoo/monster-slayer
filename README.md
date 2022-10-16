@@ -11,7 +11,8 @@ Deployed on: https://monster-slayer-vue-game.netlify.app/
 <img width="1360" alt="Screen Shot 2022-10-16 at 4 57 14 PM" src="https://user-images.githubusercontent.com/86020207/196027066-616ac0f7-36fb-4f40-80e6-e9cf96411fe5.png">
 
 ## To Get Started 
-1. Open index.html on your browser
-2. Play!
+1. Download files
+2. Open index.html on your browser
+3. Play!
 
 

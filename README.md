@@ -14,5 +14,5 @@ Deployed on: https://monster-slayer-vue-game.netlify.app/
 1. Download files
 2. Open index.html on your browser
 3. Play!
-
+Note: Special Attack can only be used after every 4 turns and you can heal a maximum of 3 times and only if your health is less than 80.
 

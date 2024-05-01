@@ -1,8 +1,5 @@
 # Monster-Slayer
 TLDR: Monster slayer web browser game that demonstrates Bootstrap and general Vue.js concepts such as Vue instance, methods, data and computing.
-
-Deployed on: https://monster-slayer-vue-game.netlify.app/
-
 ## Tech Stack 
 * HTML
 * CSS
